@@ -470,7 +470,7 @@ class FundModal extends React.Component{
             <p>Fee Rate: {this.props.feeRate}%</p>
             <p>Payment Cycle: {this.props.paymentCycle} days</p>
             <div className="ipfs-button">
-              <a href={this.props.ipfsURL} class="ipfs-button" target="_blank">View Prospectus</a>
+              <a href={this.props.ipfsURL} className="ipfs-button" target="_blank">View Prospectus</a>
             </div>
             <p>Fundraising Period: {status} </p>
             {endFundraising}
@@ -832,7 +832,9 @@ class FeeModal2 extends React.Component{
    * @return cycleComplete: true or false. If true, fees owed are owed
    */
   checkFee = async() => {
-    const result = await this.props.contract.checkFee(this.props.fundNumber, 12, { from: this.props.account });
+    const result = await this.props.contract.checkFee(this.props.fundNumber, { from: this.props.account });
+    console.log(result[0])
+    console.log(result[1])
     const feesOwed = this.props.web3.utils.fromWei(result[0].toString(), "ether");
     const cycleComplete = result[1];
     this.setState({
@@ -893,7 +895,7 @@ class InvestmentTableEntry extends React.Component{
         <td>{balDepRounded} ether ({rounded}%)</td>
         <td>
           <div className="ipfs-button">
-            <a href={this.props.ipfsURL} class="ipfs-button" target="_blank">View Prospectus</a>
+            <a href={this.props.ipfsURL} className="ipfs-button" target="_blank">View Prospectus</a>
           </div>  
         </td>
         <td>
