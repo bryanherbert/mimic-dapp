@@ -16,9 +16,19 @@ class Fund extends React.Component {
     super(props);
     this.state = {
       investmentAmount: null,
+      inputInvestmentAmount: null,
+      //Catches errors in Fund Initialization Form
+      formErrors: {
+        investmentAmount: ''
+      },
+      //Used for form valiation
+      investmentAmountValid: false,
+      formValid: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInvestClick = this.handleInvestClick.bind(this);
+    this.validateField = this.validateField.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   handleChange(event) {
@@ -28,7 +38,36 @@ class Fund extends React.Component {
 
     this.setState({
       [name]: value
-    });
+    },
+    () => {this.validateField(name, value)}
+    );
+  }
+
+  validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors;
+    let investmentAmountValid = this.state.investmentAmountValid;
+
+    switch(fieldName) {
+      case 'inputInvestmentAmount':
+         //Only accept integers
+         investmentAmountValid = value.match(/^[0-9]+$/) && !isNaN(value);
+         fieldValidationErrors.investmentAmount = investmentAmountValid ? '' : ' is invalid';
+         break;
+      default:
+        break;
+    }
+    //Update state with result
+    this.setState({
+      formErrors: fieldValidationErrors,
+      investmentAmountValid: investmentAmountValid,
+    }, 
+    this.validateForm);
+  }
+
+  /**@dev confirms all fields in form are valid */
+  validateForm() {
+    this.setState({
+      formValid: this.state.investmentAmountValid});
   }
 
   /** @dev handles when a user clicks invest
@@ -36,7 +75,7 @@ class Fund extends React.Component {
     */
   handleInvestClick= async(event) => {
     event.preventDefault();
-    const { investmentAmount } = this.state;
+    const investmentAmount = this.state.inputInvestmentAmount;
     const investment = this.props.web3.utils.toWei(investmentAmount.toString(), "ether");
     var feeRate = await this.props.contract.checkFeeRate.call(this.props.fundNum);
     //Add 1% for rounding
@@ -46,9 +85,9 @@ class Fund extends React.Component {
       this.props.fundNum, 
       investment,
       { from: this.props.accounts[0], value:fee });
-    
-    //Update state with result
-    this.setState(this.props.setup);
+    this.setState(
+      this.props.setup
+    );
   }
 
   render(){
@@ -60,10 +99,10 @@ class Fund extends React.Component {
         <Form inline className="invest-button">
           <FormGroup>
             <Label for="investButton" hidden></Label>
-            <Input type="text" name="investmentAmount" id="investment" placeholder="Ether" onChange={this.handleChange}/>
+            <Input type="text" name="inputInvestmentAmount" id="investment" placeholder="Ether" onChange={this.handleChange}/>
           </FormGroup>
           {' '}
-          <Button color="success" onClick={this.handleInvestClick}>Invest</Button>
+          <Button color="success" disabled={!this.state.formValid} onClick={this.handleInvestClick}>Invest</Button>
         </Form>
       );
       //Else display an alert stating the fund raising period is over
@@ -74,6 +113,30 @@ class Fund extends React.Component {
       </Alert>
       );
     }
+
+    //Used for Form validation
+    //formErrors
+    const fE = this.state.formErrors;
+    //formErrors array to use map function
+    const fEArr = [fE.investmentAmount];
+    const displayFormErrors = fEArr.map((fieldErrors, i) => {
+      let fieldLabel = null;
+      switch(i){
+        case 0:
+          fieldLabel = "Investment Amount";
+          break;
+        default:
+          fieldLabel = "File";
+      }
+      if(fEArr[i].length > 0){
+        return(
+          <p key={i} className="error-message"><strong>{fieldLabel} {fieldErrors}</strong></p>
+        )
+      } else {
+        return '';
+      }
+    });
+
     return(
       <div className="fund">
         <h3>{this.props.name} Fund</h3>
@@ -84,6 +147,7 @@ class Fund extends React.Component {
         <div className="ipfs-button">
           <a href={this.props.ipfsURL} className="ipfs-button" target="_blank">View Prospectus</a>
         </div>
+        {displayFormErrors}
         {investment}
       </div>
     );
@@ -1131,6 +1195,7 @@ class App extends Component {
     reader.readAsArrayBuffer(file)
     reader.onloadend = () => this.convertToBuffer(reader);
   };
+
   //helper function
   convertToBuffer = async(reader) => {
     const buffer = await Buffer.from(reader.result);
