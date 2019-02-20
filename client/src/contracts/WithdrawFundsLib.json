@@ -4316,10 +4316,16 @@
       "links": {},
       "address": "0x75245fF2CBC766e72A586f461395927601908965",
       "transactionHash": "0x805e8043e34ab1a5b6a07856c1384acd9b4a520e176c34de8650ff6b7864b2e5"
+    },
+    "1550441622728": {
+      "events": {},
+      "links": {},
+      "address": "0x406659762e4f70A550193175a060a885650f9373",
+      "transactionHash": "0x2b3b097e26ab3875d04b7e45011694ff365af3ae5f3b767df60b312faaf7991c"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-16T07:35:43.029Z",
+  "updatedAt": "2019-02-17T22:14:08.471Z",
   "devdoc": {
     "author": "Bryan Herbert",
     "methods": {

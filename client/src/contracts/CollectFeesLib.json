@@ -2152,10 +2152,16 @@
       "links": {},
       "address": "0x117327C1a3A5e541F3d0e0fD490FD6d84703e6fa",
       "transactionHash": "0xd9832decc08c597ea3610372993cc3f4091e859683ae7ea7099efaf7644de428"
+    },
+    "1550441622728": {
+      "events": {},
+      "links": {},
+      "address": "0x4BfF9bAf0E1B0D32400c4cd40484747e288243f2",
+      "transactionHash": "0x89056ca7d4ab5d1bfcadd2ee60a87b4bfd9be795883552c84bb0c0594dfaf0bd"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-16T07:35:42.987Z",
+  "updatedAt": "2019-02-17T22:14:08.432Z",
   "devdoc": {
     "author": "Bryan Herbert",
     "methods": {

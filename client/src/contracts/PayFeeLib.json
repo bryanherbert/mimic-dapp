@@ -7723,10 +7723,18 @@
       },
       "address": "0xA3b301E9478F109dDBd9CBfD0aF9e1025ed9275e",
       "transactionHash": "0x8da30d350644ad5ab4042b07e743dafd97a475e38d0004092ae38c5b4c29ad36"
+    },
+    "1550441622728": {
+      "events": {},
+      "links": {
+        "Misc": "0x5CB767d9d9eC86AFC200EF565E389eDEd6373c38"
+      },
+      "address": "0x0640EaE14ef5F5ADCA50cFa6d893D97256fbe822",
+      "transactionHash": "0xadefcf23a74fe13278589c349b27bc4da03262e2534b3ddcbde602ee57bd3d1e"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-16T07:35:43.062Z",
+  "updatedAt": "2019-02-17T22:14:08.500Z",
   "devdoc": {
     "author": "Bryan Herbert",
     "methods": {

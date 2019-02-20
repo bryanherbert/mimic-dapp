@@ -1596,10 +1596,16 @@
       "links": {},
       "address": "0xa364A722F5795Ba702AC1e12635A86bA518c7952",
       "transactionHash": "0x0c4cac7cbdd60dffbb636abad2dd379466839dc97536a7f44e0f77b46ad7f4d5"
+    },
+    "1550441622728": {
+      "events": {},
+      "links": {},
+      "address": "0x5CB767d9d9eC86AFC200EF565E389eDEd6373c38",
+      "transactionHash": "0xbad74d0aef640d381fea104e5eecd72231d844df2254674a076dd1e78684ed87"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-16T07:35:42.948Z",
+  "updatedAt": "2019-02-17T22:14:08.415Z",
   "devdoc": {
     "author": "Bryan Herbert",
     "methods": {

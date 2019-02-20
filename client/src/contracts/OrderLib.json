@@ -5027,10 +5027,16 @@
       "links": {},
       "address": "0xc321811B0D02cBb8C103620132f840f35fFA40c4",
       "transactionHash": "0x31dd7bde7dbbe064c3f7dea9bd00e33568c5a06192b6a4a9ecb9914869422963"
+    },
+    "1550441622728": {
+      "events": {},
+      "links": {},
+      "address": "0x3CD22794de713FC895dF3DbA7948b2CEC01540f0",
+      "transactionHash": "0x8eb71f8d8642379e7aa77237c18c237dbf21be939cf850e42726f4915739cf50"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-16T07:35:43.040Z",
+  "updatedAt": "2019-02-17T22:14:08.481Z",
   "devdoc": {
     "author": "Bryan Herbert",
     "methods": {
